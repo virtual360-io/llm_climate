@@ -63,3 +63,5 @@ group :test do
 end
 
 gem "css-zero", "~> 0.0.77"
+
+gem "git", "~> 2.3"

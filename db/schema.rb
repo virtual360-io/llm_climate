@@ -25,6 +25,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_23_134329) do
     t.datetime "sync_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["path"], name: "index_code_files_on_path"
     t.index ["repository_id"], name: "index_code_files_on_repository_id"
   end
 
