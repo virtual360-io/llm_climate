@@ -23,7 +23,8 @@ class Repository < ApplicationRecord
     def update_existing_files(git, dir, file_paths)
       self.code_files.where(path: file_paths.map { _1.gsub("#{dir}/", '') }).map do |code_file|
         file_path = "#{dir}/#{code_file.path}"
-        code_file.sync_at = git.log(1).object(file_path).first.date
+
+        code_file.attributes = CodeFile.code_file_attributes(git, file_path)
 
         file_paths -= [file_path]
 
@@ -33,7 +34,7 @@ class Repository < ApplicationRecord
 
     def build_new_files(git, dir, file_paths)
       file_paths.map do |file_path|
-        self.code_files.build(path: file_path.gsub("#{dir}/", ''), sync_at: git.log(1).object(file_path).first.date)
+        self.code_files.build(path: file_path.gsub("#{dir}/", ''), **CodeFile.code_file_attributes(git, file_path))
       end
     end
 

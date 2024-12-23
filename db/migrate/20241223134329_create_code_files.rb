@@ -1,6 +1,8 @@
 class CreateCodeFiles < ActiveRecord::Migration[8.0]
   def change
     create_table :code_files do |t|
+      t.text :content
+
       t.string :path, index: true
       t.integer :overrall_grade
       t.text :overral_review
