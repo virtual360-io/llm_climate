@@ -1,0 +1,9 @@
+<div class="flex flex-col gap-half">
+  <%= f.label :url %>
+  <%= f.url_field :url, class: 'input' %>
+</div>
+
+<div class="flex flex-row gap items-center">
+  <%= f.submit 'Save', class: 'btn btn--primary' %>
+  <%= link_to 'Back', repositories_path %>
+</div>

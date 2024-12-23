@@ -1,0 +1,28 @@
+<div>
+  <h1>URL - <%= @repository.url %></h1>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Overrall Grate</th>
+        <th>Security Grade</th>
+        <th>Performance Grade</th>
+        <th>Refactoring Grade</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @code_files.each do |file| %>
+        <tr>
+          <td><%= file.path %></td>
+          <td><%= file.overall_grade %></td>
+          <td><%= file.security_grade %></td>
+          <td><%= file.performance_grade %></td>
+          <td><%= file.refactoring_grade %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
