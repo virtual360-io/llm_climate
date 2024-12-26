@@ -4,13 +4,13 @@ class CreateCodeFiles < ActiveRecord::Migration[8.0]
       t.text :content
 
       t.string :path, index: true
-      t.integer :overrall_grade
-      t.text :overral_review
-      t.integer :security_grade
+      t.decimal :overall_grade
+      t.text :overall_review
+      t.decimal :security_grade
       t.text :security_review
-      t.integer :refactoring_grade
+      t.decimal :refactoring_grade
       t.text :refactoring_review
-      t.integer :performance_grade
+      t.decimal :performance_grade
       t.text :performance_review
       t.references :repository, null: false, foreign_key: true
 

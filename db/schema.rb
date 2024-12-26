@@ -14,13 +14,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_23_134329) do
   create_table "code_files", force: :cascade do |t|
     t.text "content"
     t.string "path"
-    t.integer "overrall_grade"
-    t.text "overral_review"
-    t.integer "security_grade"
+    t.decimal "overall_grade"
+    t.text "overall_review"
+    t.decimal "security_grade"
     t.text "security_review"
-    t.integer "refactoring_grade"
+    t.decimal "refactoring_grade"
     t.text "refactoring_review"
-    t.integer "performance_grade"
+    t.decimal "performance_grade"
     t.text "performance_review"
     t.integer "repository_id", null: false
     t.datetime "sync_at"

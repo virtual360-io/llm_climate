@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails APP that code review each file of a repository, allowing devs to focus where it should improve code quality
 
-Things you may want to cover:
+For now, only bedrock reviewer is implemented
 
-* Ruby version
+To run, clone the repository and run:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+FILE_EXTENSIONS='py,rb,js,css,erb' FILE_EXCLUSION='/test/dummy|db/migrate' AWS_REGION='us-east-1' AWS_ACCESS_KEY='ACCESS_KEY' AWS_SECRET_ACCESS_KEY='SECRET_ACCESS_KEY' rails s
 
 * ...

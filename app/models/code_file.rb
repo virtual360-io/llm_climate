@@ -2,6 +2,13 @@ class CodeFile < ApplicationRecord
   belongs_to :repository
   after_commit :async_review, if: -> { saved_change_to_sync_at? }
 
+  def review=(review)
+    %w[overall refactoring performance security].each do |category|
+      self.send("#{category}_grade=", review.dig(category, "grade"))
+      self.send("#{category}_review=", review.dig(category, "review"))
+    end
+  end
+
   class << self
     def code_file_attributes(git, file_path)
       {

@@ -2,8 +2,8 @@
 
 one:
   path: MyString
-  overrall_grade: 1
-  overral_review: MyText
+  overall_grade: 1
+  overall_review: MyText
   security_grade: 1
   security_review: MyText
   refactoring_grade: 1
@@ -14,8 +14,8 @@ one:
 
 two:
   path: MyString
-  overrall_grade: 1
-  overral_review: MyText
+  overall_grade: 1
+  overall_review: MyText
   security_grade: 1
   security_review: MyText
   refactoring_grade: 1
