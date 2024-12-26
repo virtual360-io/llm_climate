@@ -1,5 +1,5 @@
 class Repository < ApplicationRecord
-  has_many :code_files, -> { order("path asc") }, dependent: :destroy
+  has_many :code_files, dependent: :destroy
 
   def checkout
     Dir.mktmpdir do |dir|

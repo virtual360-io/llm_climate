@@ -6,6 +6,8 @@ class Reviewer
     <<~PROMPT
       You are an AI code reviewer that must output ONLY valid JSON.
 
+      #{prompt_return_structure}
+
       Please review the following code in three dimensions:
 
       1. Refactoring: Does the code need refactoring to achieve the best quality? Please provide a grade from 1 to 5.
@@ -19,16 +21,14 @@ class Reviewer
       - Explanation of why the improved version is better
 
       Examples should go inside the "review" key of each section.
-
-      #{prompt_return_structure}
     PROMPT
   end
 
   def prompt_return_structure
     <<~PROMPT
-      STRICT INSTRUCTION: Respond with raw JSON only. No introduction text, no explanation, no markdown, no "Here's the response", nothing else.
+      STRICT INSTRUCTION: Respond with raw JSON only. No introduction text, no explanation, no markdown, no "Here's the response", no "Here's the JSON response for the code review:", nothing else.
 
-      Your response must start with { and end with } with no other characters before or after.
+      VERY IMPORTANT Your response MUST start with { and end with } with no other characters before or after.
 
       Review the code for refactoring, performance, and security using this exact JSON structure:
       {

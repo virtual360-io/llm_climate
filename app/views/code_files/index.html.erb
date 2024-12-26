@@ -1,0 +1,24 @@
+<%= turbo_frame_tag 'code-files' do %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><%= link_to 'File', repository_code_files_path(@repository, params: { sort: 'path' }) %></th>
+        <th style='width: 100px'><%= link_to 'Overall', repository_code_files_path(@repository, params: { sort: 'overall' }) %></th>
+        <th style='width: 100px'><%= link_to 'Security', repository_code_files_path(@repository, params: { sort: 'security' }) %></th>
+        <th style='width: 120px'><%= link_to 'Performance', repository_code_files_path(@repository, params: { sort: 'performance' }) %></th>
+        <th style='width: 120px'><%= link_to 'Refactoring', repository_code_files_path(@repository, params: { sort: 'refactoring' }) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @code_files.each do |file| %>
+        <tr>
+          <td><%= link_to file.path, repository_code_file_path(@repository, file), target: '_top' %></td>
+          <td><%= file.overall_grade %></td>
+          <td><%= file.security_grade %></td>
+          <td><%= file.performance_grade %></td>
+          <td><%= file.refactoring_grade %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

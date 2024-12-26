@@ -1,4 +1,13 @@
 class CodeFile < ApplicationRecord
+  scope :ordered, ->(sort) {
+    case sort
+    when "path", nil, ""
+      order("path asc")
+    else
+      order("#{sort}_grade asc")
+    end
+  }
+
   belongs_to :repository
   after_commit :async_review, if: -> { saved_change_to_sync_at? }
 

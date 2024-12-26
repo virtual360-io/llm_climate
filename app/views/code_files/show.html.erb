@@ -1,0 +1,108 @@
+<div>
+  <h1>Code File Details</h1>
+
+  <div class="file-info">
+    <h2>Path: <%= @code_file.path %></h2>
+    <p><strong>Repository:</strong> <%= link_to @repository.url, repository_path(@repository) %></p>
+  </div>
+
+  <div class="grades">
+    <h3>Grades</h3>
+    <div class="grade-item">
+      <h4>Overall Grade: <%= @code_file.overall_grade %></h4>
+      <div class="review">
+        <strong>Review:</strong>
+        <p><%= @code_file.overall_review %></p>
+      </div>
+    </div>
+
+    <div class="grade-item">
+      <h4>Security Grade: <%= @code_file.security_grade %></h4>
+      <div class="review">
+        <strong>Review:</strong>
+        <p><%= @code_file.security_review %></p>
+      </div>
+    </div>
+
+    <div class="grade-item">
+      <h4>Refactoring Grade: <%= @code_file.refactoring_grade %></h4>
+      <div class="review">
+        <strong>Review:</strong>
+        <p><%= @code_file.refactoring_review %></p>
+      </div>
+    </div>
+
+    <div class="grade-item">
+      <h4>Performance Grade: <%= @code_file.performance_grade %></h4>
+      <div class="review">
+        <strong>Review:</strong>
+        <p><%= @code_file.performance_review %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-content">
+    <h3>File Content</h3>
+    <pre><code><%= @code_file.content %></code></pre>
+  </div>
+
+  <div class="metadata">
+    <p><strong>Last Synced:</strong> <%= @code_file.sync_at&.strftime("%Y-%m-%d %H:%M:%S") %></p>
+    <p><strong>Created:</strong> <%= @code_file.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+    <p><strong>Updated:</strong> <%= @code_file.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+  </div>
+
+  <%= link_to "Back to Files", repository_code_files_path(@repository), class: "btn btn--positive" %>
+</div>
+
+<style>
+.file-info {
+    margin-bottom: 30px;
+}
+
+.grades {
+    margin-bottom: 30px;
+}
+
+.grade-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.review {
+    margin-top: 10px;
+    white-space: break-spaces;
+}
+
+.code-content {
+    margin-bottom: 30px;
+}
+
+pre {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.metadata {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-link:hover {
+    background-color: #0056b3;
+}
+</style>
