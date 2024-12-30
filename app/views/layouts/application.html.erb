@@ -25,6 +25,15 @@
   <body class="header-layout">
     <header id="header">
       <h1 class="font-bold text-2xl">LLM Climate</h1>
+      <% if authenticated? %>
+        <nav>
+          <ul>
+            <li><%= link_to 'Logout', session_path, data: { turbo_method: 'delete' } %></li>
+          </ul>
+        </nav>
+      <% end %>
+      <div>
+      </div>
     </header>
 
     <main id="main">
