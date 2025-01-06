@@ -1,0 +1,4 @@
+production:
+  checkout_task:
+    class: CheckoutRepositoriesJob
+    schedule: every day at 9pm
