@@ -19,13 +19,13 @@ class CodeFile < ApplicationRecord
   end
 
   class << self
-    def code_file_attributes(git, file_path)
+    def code_file_attributes(git, dir, file_path)
       log = git.log(1).object(file_path).first
 
       {
         content: File.read(file_path),
         sync_at: log.date,
-        url: get_remote_file_url(git, file_path, log.sha)
+        url: get_remote_file_url(git, file_path.gsub(dir, ""), log.sha)
       }
     end
 
