@@ -26,7 +26,7 @@ class Repository < ApplicationRecord
 
         code_file.attributes = CodeFile.code_file_attributes(git, dir, file_path)
 
-        file_paths -= [ file_path ]
+        file_paths.delete(file_path)
 
         code_file
       end
