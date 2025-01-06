@@ -2,6 +2,7 @@ class CreateCodeFiles < ActiveRecord::Migration[8.0]
   def change
     create_table :code_files do |t|
       t.text :content
+      t.string :url
 
       t.string :path, index: true
       t.decimal :overall_grade

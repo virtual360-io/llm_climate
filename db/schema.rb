@@ -13,6 +13,7 @@
 ActiveRecord::Schema[8.0].define(version: 2024_12_30_145526) do
   create_table "code_files", force: :cascade do |t|
     t.text "content"
+    t.string "url"
     t.string "path"
     t.decimal "overall_grade"
     t.text "overall_review"

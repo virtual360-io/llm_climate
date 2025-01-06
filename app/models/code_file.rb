@@ -20,11 +20,47 @@ class CodeFile < ApplicationRecord
 
   class << self
     def code_file_attributes(git, file_path)
+      log = git.log(1).object(file_path).first
+
       {
         content: File.read(file_path),
-        sync_at: git.log(1).object(file_path).first.date
+        sync_at: log.date,
+        url: get_remote_file_url(git, file_path, log.sha)
       }
     end
+
+    private
+
+      def get_remote_file_url(git, file_path, commit_hash)
+        remote_url = git.remote.url
+
+        remote_url = clean_remote_url(remote_url)
+
+        if remote_url.include?("github.com")
+          github_remote_url(remote_url, commit_hash, file_path)
+        elsif remote_url.include?("gitlab.com")
+          gitlab_remote_url(remote_url, commit_hash, file_path)
+        else
+          nil
+        end
+      end
+
+      def clean_remote_url(remote_url)
+        return remote_url unless remote_url.start_with?("git@")
+
+        remote_url
+          .sub(":", "/")
+          .sub("git@", "https://")
+          .sub(/.git$/, "")
+      end
+
+      def github_remote_url(remote_url, commit_hash, file_path)
+        "#{remote_url}/blob/#{commit_hash}/#{file_path}"
+      end
+
+      def gitlab_remote_url(remote_url, commit_hash, file_path)
+        "#{remote_url}/-/blob/#{commit_hash}/#{file_path}"
+      end
   end
 
   private
