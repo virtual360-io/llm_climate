@@ -1,5 +1,24 @@
 <div class='flex flex-col gap'>
-  <h1>URL - <%= @repository.url %></h1>
+  <h1>URL - <%= @repository.url %> - Média: <%= @repository.code_files.average(:overall_grade) %> </h1>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th style='width: 100px'>Overall</th>
+        <th style='width: 100px'>Security</th>
+        <th style='width: 120px'>Performance</th>
+        <th style='width: 120px'>Refactoring</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @repository.code_files.average(:overall_grade).round(2) %></td>
+        <td><%= @repository.code_files.average(:security_grade).round(2) %></td>
+        <td><%= @repository.code_files.average(:performance_grade).round(2) %></td>
+        <td><%= @repository.code_files.average(:refactoring_grade).round(2) %></td>
+      </tr>
+    </tbody>
+  </table>
 
   <%= turbo_frame_tag 'code-files', src: repository_code_files_path(@repository) %>
 </div>

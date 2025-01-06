@@ -33,5 +33,5 @@ rails db:migrate
 
 4. Start the server:
 ```bash
-FILE_EXTENSIONS='py,rb,js,css,erb' FILE_EXCLUSION='/test/dummy|db/migrate' AWS_REGION='us-east-1' AWS_ACCESS_KEY='ACCESS_KEY' AWS_SECRET_ACCESS_KEY='SECRET_ACCESS_KEY' rails s
+FILE_EXTENSIONS='py,rb,js,css,erb' FILE_EXCLUSION='/test/dummy|db/migrate|db/' AWS_REGION='us-east-1' AWS_ACCESS_KEY='ACCESS_KEY' AWS_SECRET_ACCESS_KEY='SECRET_ACCESS_KEY' rails s
 ```
