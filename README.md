@@ -35,3 +35,7 @@ rails db:migrate
 ```bash
 FILE_EXTENSIONS='py,rb,js,css,erb' FILE_EXCLUSION='/test/dummy|db/migrate|db/' AWS_REGION='us-east-1' AWS_ACCESS_KEY='ACCESS_KEY' AWS_SECRET_ACCESS_KEY='SECRET_ACCESS_KEY' rails s
 ```
+
+## Config SAML SSO
+
+Copy saml.yml.example to saml.yml and change the attributes to it
