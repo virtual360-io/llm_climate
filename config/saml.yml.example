@@ -1,0 +1,9 @@
+development:
+  assertion_consumer_service_url: 'http://localhost:3000/saml_sessions/consume'
+  sp_entity_id: 'XXXXXX'
+  idp_entity_id: 'XXXXXX'
+  idp_slo_service_url: 'XXXXXX'
+  idp_sso_service_url: 'XXXXXX'
+  idp_cert_fingerprint: 'XXXXXXX'
+  idp_cert_fingerprint_algorithm: 'http://www.w3.org/2000/09/xmldsig#sha1'
+  email_attribute: 'XXXXX'
