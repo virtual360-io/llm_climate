@@ -68,4 +68,4 @@ gem "git", "~> 2.3"
 gem "aws-sdk-bedrockruntime"
 gem "mission_control-jobs"
 
-gem 'ruby-saml', '~> 1.17.0'
+gem "ruby-saml", "~> 1.17.0"
