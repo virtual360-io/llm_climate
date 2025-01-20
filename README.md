@@ -38,4 +38,4 @@ FILE_EXTENSIONS='py,rb,js,css,erb' FILE_EXCLUSION='/test/dummy|db/migrate|db/' A
 
 ## Config SAML SSO
 
-Copy saml.yml.example to saml.yml and change the attributes to it
+Copy saml.yml.example to saml.yml and change the attributes
