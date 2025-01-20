@@ -1,0 +1,39 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "592acee5d3bc3e405976408a11b6edd6e602c4c31f8f08409ee40115751a3253",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/code_files/show.html.erb",
+      "line": 46,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"view on repository\", Repository.find(params[:repository_id]).code_files.find(params[:id]).url)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "CodeFilesController",
+          "method": "show",
+          "line": 10,
+          "file": "app/controllers/code_files_controller.rb",
+          "rendered": {
+            "name": "code_files/show",
+            "file": "app/views/code_files/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "code_files/show"
+      },
+      "user_input": "Repository.find(params[:repository_id]).code_files.find(params[:id]).url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.0.0"
+}
