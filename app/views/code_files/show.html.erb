@@ -43,7 +43,7 @@
 
   <div class="code-content">
     <h3>File Content</h3>
-    <pre><code><%= link_to 'view on repository', @code_file.url %></code></pre>
+    <pre><code><%= sanitize link_to 'view on repository', @code_file.url %></code></pre>
   </div>
 
   <div class="metadata">
