@@ -62,7 +62,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "css-zero", "~> 0.0.77"
+gem "css-zero", "~> 1.1.5"
 
 gem "git", "~> 2.3"
 gem "aws-sdk-bedrockruntime"
