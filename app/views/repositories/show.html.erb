@@ -1,24 +1,47 @@
-<div class='flex flex-col gap'>
-  <h1>URL - <%= @repository.url %> - Média: <%= @repository.code_files.average(:overall_grade) %> </h1>
+<div class="page-header">
+  <div>
+    <h1 class="page-title mb-2"><%= @repository.url %></h1>
+    <p class="text-subtle">Average Score: <span class="text-primary font-medium"><%= @repository.code_files.average(:overall_grade).round(2) %></span></p>
+  </div>
+  <div class="flex gap-4">
+    <%= link_to 'Edit Repository', edit_repository_path(@repository), class: 'btn btn--secondary' %>
+    <%= link_to 'Back to Repositories', repositories_path, class: 'btn' %>
+  </div>
+</div>
 
-  <table class='table'>
-    <thead>
-      <tr>
-        <th style='width: 100px'>Overall</th>
-        <th style='width: 100px'>Security</th>
-        <th style='width: 120px'>Performance</th>
-        <th style='width: 120px'>Refactoring</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @repository.code_files.average(:overall_grade).round(2) %></td>
-        <td><%= @repository.code_files.average(:security_grade).round(2) %></td>
-        <td><%= @repository.code_files.average(:performance_grade).round(2) %></td>
-        <td><%= @repository.code_files.average(:refactoring_grade).round(2) %></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Overall Score</h3>
+      <p class="text-2xl font-semibold"><%= @repository.code_files.average(:overall_grade).round(2) %></p>
+    </div>
+  </div>
 
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Security Score</h3>
+      <p class="text-2xl font-semibold"><%= @repository.code_files.average(:security_grade).round(2) %></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Performance Score</h3>
+      <p class="text-2xl font-semibold"><%= @repository.code_files.average(:performance_grade).round(2) %></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Refactoring Score</h3>
+      <p class="text-2xl font-semibold"><%= @repository.code_files.average(:refactoring_grade).round(2) %></p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h2 class="text-lg font-medium">Files Analysis</h2>
+  </div>
   <%= turbo_frame_tag 'code-files', src: repository_code_files_path(@repository) %>
 </div>

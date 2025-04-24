@@ -23,20 +23,27 @@
   </head>
 
   <body class="header-layout">
-    <header id="header">
-      <h1 class="font-bold text-2xl">LLM Climate</h1>
-      <% if authenticated? %>
-        <nav>
-          <ul>
-            <li><%= link_to 'Logout', session_path, data: { turbo_method: 'delete' } %></li>
-          </ul>
-        </nav>
-      <% end %>
-      <div>
+    <header id="header" class="nav-header">
+      <div class="flex items-center gap-8">
+        <h1 class="text-2xl font-bold text-primary">LLM Climate</h1>
+        <% if authenticated? %>
+          <nav>
+            <ul class="nav-list">
+              <li><%= link_to 'Dashboard', root_path, class: 'nav-link' %></li>
+              <li><%= link_to 'Repositories', repositories_path, class: 'nav-link' %></li>
+            </ul>
+          </nav>
+        <% end %>
       </div>
+
+      <% if authenticated? %>
+        <div class="flex items-center gap-4">
+          <%= link_to 'Logout', session_path, class: 'nav-link', data: { turbo_method: 'delete' } %>
+        </div>
+      <% end %>
     </header>
 
-    <main id="main">
+    <main id="main" class="container py-6">
       <%= yield %>
     </main>
   </body>

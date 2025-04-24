@@ -1,58 +1,106 @@
-<div>
-  <h1>Code File Details</h1>
-
-  <div class="file-info">
-    <h2>Path: <%= @code_file.path %></h2>
-    <p><strong>Repository:</strong> <%= link_to @repository.url, repository_path(@repository) %></p>
+<div class="page-header">
+  <div>
+    <h1 class="page-title mb-2"><%= @code_file.path %></h1>
+    <p class="text-subtle">
+      Repository: <%= link_to @repository.url, repository_path(@repository), class: 'text-primary hover:underline' %>
+    </p>
   </div>
+  <div class="flex gap-4">
+    <%= link_to 'View on Repository', @code_file.url, class: 'btn btn--primary', target: '_blank' %>
+    <%= link_to 'Back to Files', repository_code_files_path(@repository), class: 'btn' %>
+  </div>
+</div>
 
-  <div class="grades">
-    <h3>Grades</h3>
-    <div class="grade-item">
-      <h4>Overall Grade: <%= @code_file.overall_grade %></h4>
-      <div class="review">
-        <strong>Review:</strong>
-        <p><%= @code_file.overall_review %></p>
-      </div>
-    </div>
-
-    <div class="grade-item">
-      <h4>Security Grade: <%= @code_file.security_grade %></h4>
-      <div class="review">
-        <strong>Review:</strong>
-        <p><%= @code_file.security_review %></p>
-      </div>
-    </div>
-
-    <div class="grade-item">
-      <h4>Refactoring Grade: <%= @code_file.refactoring_grade %></h4>
-      <div class="review">
-        <strong>Review:</strong>
-        <p><%= @code_file.refactoring_review %></p>
-      </div>
-    </div>
-
-    <div class="grade-item">
-      <h4>Performance Grade: <%= @code_file.performance_grade %></h4>
-      <div class="review">
-        <strong>Review:</strong>
-        <p><%= @code_file.performance_review %></p>
-      </div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Overall Score</h3>
+      <p class="text-2xl font-semibold"><%= number_with_precision(@code_file.overall_grade, precision: 1) %></p>
     </div>
   </div>
 
-  <div class="code-content">
-    <h3>File Content</h3>
-    <pre><code><%= sanitize link_to 'view on repository', @code_file.url %></code></pre>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Security Score</h3>
+      <p class="text-2xl font-semibold"><%= number_with_precision(@code_file.security_grade, precision: 1) %></p>
+    </div>
   </div>
 
-  <div class="metadata">
-    <p><strong>Last Synced:</strong> <%= @code_file.sync_at&.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <p><strong>Created:</strong> <%= @code_file.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <p><strong>Updated:</strong> <%= @code_file.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Performance Score</h3>
+      <p class="text-2xl font-semibold"><%= number_with_precision(@code_file.performance_grade, precision: 1) %></p>
+    </div>
   </div>
 
-  <%= link_to "Back to Files", repository_code_files_path(@repository), class: "btn btn--positive" %>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-sm font-medium text-subtle mb-1">Refactoring Score</h3>
+      <p class="text-2xl font-semibold"><%= number_with_precision(@code_file.refactoring_grade, precision: 1) %></p>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="space-y-6">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="text-lg font-medium">Overall Review</h2>
+      </div>
+      <div class="card-body">
+        <p class="whitespace-pre-wrap"><%= @code_file.overall_review %></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2 class="text-lg font-medium">Security Review</h2>
+      </div>
+      <div class="card-body">
+        <p class="whitespace-pre-wrap"><%= @code_file.security_review %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="text-lg font-medium">Performance Review</h2>
+      </div>
+      <div class="card-body">
+        <p class="whitespace-pre-wrap"><%= @code_file.performance_review %></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2 class="text-lg font-medium">Refactoring Review</h2>
+      </div>
+      <div class="card-body">
+        <p class="whitespace-pre-wrap"><%= @code_file.refactoring_review %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-6">
+  <div class="card-header flex items-center justify-between">
+    <h2 class="text-lg font-medium">File Information</h2>
+  </div>
+  <div class="card-body space-y-2">
+    <p class="text-sm">
+      <span class="text-subtle">Last Synced:</span>
+      <span class="font-medium"><%= @code_file.sync_at&.strftime("%Y-%m-%d %H:%M:%S") %></span>
+    </p>
+    <p class="text-sm">
+      <span class="text-subtle">Created:</span>
+      <span class="font-medium"><%= @code_file.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+    </p>
+    <p class="text-sm">
+      <span class="text-subtle">Updated:</span>
+      <span class="font-medium"><%= @code_file.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+    </p>
+  </div>
 </div>
 
 <style>

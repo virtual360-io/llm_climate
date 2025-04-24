@@ -1,24 +1,63 @@
 <%= turbo_frame_tag 'code-files' do %>
-  <table class='table'>
-    <thead>
-      <tr>
-        <th><%= link_to 'File', repository_code_files_path(@repository, params: { sort: 'path' }) %></th>
-        <th style='width: 100px'><%= link_to 'Overall', repository_code_files_path(@repository, params: { sort: 'overall' }) %></th>
-        <th style='width: 100px'><%= link_to 'Security', repository_code_files_path(@repository, params: { sort: 'security' }) %></th>
-        <th style='width: 120px'><%= link_to 'Performance', repository_code_files_path(@repository, params: { sort: 'performance' }) %></th>
-        <th style='width: 120px'><%= link_to 'Refactoring', repository_code_files_path(@repository, params: { sort: 'refactoring' }) %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @code_files.each do |file| %>
+  <div class="table-container">
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= link_to file.path, repository_code_file_path(@repository, file), target: '_top' %></td>
-          <td><%= file.overall_grade %></td>
-          <td><%= file.security_grade %></td>
-          <td><%= file.performance_grade %></td>
-          <td><%= file.refactoring_grade %></td>
+          <th>
+            <%= link_to repository_code_files_path(@repository, params: { sort: 'path' }), class: 'flex items-center gap-2 text-neutral-600 hover:text-neutral-900' do %>
+              File
+              <% if params[:sort] == 'path' %>
+                <span class="text-primary">↓</span>
+              <% end %>
+            <% end %>
+          </th>
+          <th class="w-24">
+            <%= link_to repository_code_files_path(@repository, params: { sort: 'overall' }), class: 'flex items-center gap-2 text-neutral-600 hover:text-neutral-900' do %>
+              Overall
+              <% if params[:sort] == 'overall' %>
+                <span class="text-primary">↓</span>
+              <% end %>
+            <% end %>
+          </th>
+          <th class="w-24">
+            <%= link_to repository_code_files_path(@repository, params: { sort: 'security' }), class: 'flex items-center gap-2 text-neutral-600 hover:text-neutral-900' do %>
+              Security
+              <% if params[:sort] == 'security' %>
+                <span class="text-primary">↓</span>
+              <% end %>
+            <% end %>
+          </th>
+          <th class="w-24">
+            <%= link_to repository_code_files_path(@repository, params: { sort: 'performance' }), class: 'flex items-center gap-2 text-neutral-600 hover:text-neutral-900' do %>
+              Perf
+              <% if params[:sort] == 'performance' %>
+                <span class="text-primary">↓</span>
+              <% end %>
+            <% end %>
+          </th>
+          <th class="w-24">
+            <%= link_to repository_code_files_path(@repository, params: { sort: 'refactoring' }), class: 'flex items-center gap-2 text-neutral-600 hover:text-neutral-900' do %>
+              Refactor
+              <% if params[:sort] == 'refactoring' %>
+                <span class="text-primary">↓</span>
+              <% end %>
+            <% end %>
+          </th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @code_files.each do |file| %>
+          <tr>
+            <td class="font-medium">
+              <%= link_to file.path, repository_code_file_path(@repository, file), class: 'hover:text-primary', target: '_top' %>
+            </td>
+            <td><%= number_with_precision(file.overall_grade, precision: 1) %></td>
+            <td><%= number_with_precision(file.security_grade, precision: 1) %></td>
+            <td><%= number_with_precision(file.performance_grade, precision: 1) %></td>
+            <td><%= number_with_precision(file.refactoring_grade, precision: 1) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% end %>

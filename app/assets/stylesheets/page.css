@@ -1,0 +1,72 @@
+/* Page header */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.page-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--neutral-600);
+  margin-top: 0.5rem;
+}
+
+/* Page sections */
+.page-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: 1rem;
+}
+
+/* Page content */
+.page-content {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Page grid layouts */
+.page-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .page-grid--sidebar {
+    grid-template-columns: 16rem 1fr;
+  }
+}
+
+/* Page metrics */
+.metrics-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

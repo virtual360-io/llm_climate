@@ -1,7 +1,73 @@
+/* Base card */
 .card {
-  background-color: var(--color-bg);
-  border-radius: var(--rounded-lg);
-  border-width: var(--border);
-  padding: var(--size-6);
+  background-color: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: 0.5rem;
   box-shadow: var(--shadow-sm);
+  transition: var(--transition-all);
+}
+
+.card:hover {
+  border-color: var(--neutral-300);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card sections */
+.card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-footer {
+  padding: 1rem 1.25rem;
+  background-color: var(--neutral-50);
+  border-top: 1px solid var(--neutral-200);
+}
+
+/* Card variations */
+.card--metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.card--metric .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card--metric .metric-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--neutral-600);
+}
+
+.card--metric .metric-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--neutral-900);
+}
+
+/* Card grid layouts */
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid--2cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-grid--3cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-grid--4cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
