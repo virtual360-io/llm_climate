@@ -68,3 +68,8 @@
     gap: 0.5rem;
   }
 }
+
+/* Corrige o alinhamento dos itens da navegação no header */
+.nav-list li {
+  margin-bottom: 0;
+}

@@ -23,24 +23,24 @@
   </head>
 
   <body class="header-layout">
-    <header id="header" class="nav-header">
-      <div class="flex items-center gap-8">
-        <h1 class="text-2xl font-bold text-primary">LLM Climate</h1>
-        <% if authenticated? %>
-          <nav>
-            <ul class="nav-list">
-              <li><%= link_to 'Dashboard', root_path, class: 'nav-link' %></li>
-              <li><%= link_to 'Repositories', repositories_path, class: 'nav-link' %></li>
-            </ul>
-          </nav>
-        <% end %>
-      </div>
-
-      <% if authenticated? %>
-        <div class="flex items-center gap-4">
-          <%= link_to 'Logout', session_path, class: 'nav-link', data: { turbo_method: 'delete' } %>
+    <header id="header" class="nav-header shadow-md bg-gradient-to-r from-primary-50 to-white sticky top-0 z-50">
+      <div class="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
+        <div class="flex items-center gap-8">
+          <a href="/" class="brand">
+            <span class="text-3xl">🌱</span>
+            <span>LLM Climate</span>
+          </a>
+          <% if authenticated? %>
+            <nav>
+              <ul class="nav-list">
+                <li><%= link_to 'Dashboard', root_path, class: 'nav-link' %></li>
+                <li><%= link_to 'Repositories', repositories_path, class: 'nav-link' %></li>
+                <li><%= link_to 'Logout', session_path, class: 'nav-link', data: { turbo_method: 'delete' } %></li>
+              </ul>
+            </nav>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </header>
 
     <main id="main" class="container py-6">
