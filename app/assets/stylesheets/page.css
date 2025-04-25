@@ -98,20 +98,3 @@
   color: var(--primary, #1d4ed8);
   text-align: center;
 }
-
-.table-container, .mb-4 {
-  margin-top: 0 !important;
-}
-
-.mb-4 {
-  margin-bottom: 2rem !important;
-}
-
-/* Destaque para tabela de arquivos */
-.table-container {
-  background: var(--neutral-25, #f8fafc);
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.03);
-  border: 1px solid var(--neutral-100);
-  border-radius: 0.75rem;
-  padding: 0.5rem 0;
-}
